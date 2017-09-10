@@ -4,7 +4,7 @@
     Author     : Saurav
 --%>
 
-  <footer class="main-footer">
+ <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.7
     </div>
@@ -208,7 +208,13 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-<script src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -230,10 +236,6 @@
 <script src="${pageContext.request.contextPath}/dist/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 <!-- Select2 -->
 <script src="${pageContext.request.contextPath}/plugins/select2/select2.full.min.js"></script>
 <!-- InputMask -->
@@ -253,16 +255,10 @@
 <script src="${pageContext.request.contextPath}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
 <script src="${pageContext.request.contextPath}/plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="${pageContext.request.contextPath}/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="${pageContext.request.contextPath}/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="${pageContext.request.contextPath}/dist/js/demo.js"></script>
 
-<script>
-$(".select2").select2();    
-</script>
+<script> 
+    $(".select2").select2();
+    </script>
 
 </body>
 </html>

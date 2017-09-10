@@ -5,6 +5,7 @@
  */
 package com.ecommerce.helloworldweb.controller;
 
+import com.ecommerce.helloworldweb.dao.ProductDao;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,6 +31,8 @@ public class AdminController extends HttpServlet {
             rd.forward(request, response);
         }
         else if(request.getRequestURI().equals(contextPath +"/admin/product")){
+            request.setAttribute("productvalues", ProductDao.select());
+            
             RequestDispatcher rd = request.getRequestDispatcher("/admin-product.jsp");
             rd.forward(request, response);
         }
