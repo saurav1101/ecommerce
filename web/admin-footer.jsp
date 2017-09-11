@@ -236,6 +236,14 @@
 <script src="${pageContext.request.contextPath}/dist/js/demo.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<!-- FastClick -->
+<!-- AdminLTE App -->
+<script src="${pageContext.request.contextPath}/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="${pageContext.request.contextPath}/dist/js/demo.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 <!-- Select2 -->
 <script src="${pageContext.request.contextPath}/plugins/select2/select2.full.min.js"></script>
 <!-- InputMask -->
@@ -255,7 +263,12 @@
 <script src="${pageContext.request.contextPath}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
 <script src="${pageContext.request.contextPath}/plugins/iCheck/icheck.min.js"></script>
-
+<!-- FastClick -->
+<script src="${pageContext.request.contextPath}/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="${pageContext.request.contextPath}/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="${pageContext.request.contextPath}/dist/js/demo.js"></script>
 <script> 
     $(".select2").select2();
     </script>

@@ -7,6 +7,7 @@ package com.ecommerce.helloworldweb.controller;
 
 import com.ecommerce.helloworldweb.dao.ProductDao;
 import com.ecommerce.helloworldweb.model.ProductModel;
+import com.ecommerce.helloworldweb.utilities.Tag;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,8 +39,9 @@ public class ProductController extends HttpServlet {
            String name=request.getParameter("pname");
            int price=Integer.parseInt(request.getParameter("pprice")); 
            int discount=Integer.parseInt(request.getParameter("pdiscount"));
-           String tags=request.getParameter("ptags");
-           
+           String[] tempTag = request.getParameterValues("ptags");
+           String tags = Tag.convertTag(tempTag);
+         
            //file upload garna baki xa
            //encapsulate the data
            ProductModel pm = new ProductModel();
@@ -47,15 +49,14 @@ public class ProductController extends HttpServlet {
            pm.setProduct_discount(discount);
            pm.setProduct_price(price);
            pm.setProduct_tag(tags);
-           
+          
            //send the object to dao
           ProductDao.insert(pm);
           response.sendRedirect(contextPath+"/admin/product");
             
         }
     }
-
-    
+  
     @Override
     public String getServletInfo() {
         return "Short description";

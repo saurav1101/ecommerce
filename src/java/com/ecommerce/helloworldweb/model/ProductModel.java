@@ -101,5 +101,5 @@ public class ProductModel implements Serializable{
         this.product_image = product_image;
     }
 
-    
+   
 }
