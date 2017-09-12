@@ -19,13 +19,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Saurav
  */
-@WebServlet({"/admin/product/add"})
+@WebServlet({"/admin/product/add","/admin/product/delete/"})
 public class ProductController extends HttpServlet {
 
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String contextPath=request.getContextPath();
+        if(request.getRequestURI().equals(contextPath+"/admin/product/delete/")) {
+            int id=Integer.parseInt(request.getParameter("id"));
+            ProductDao.delete(id);
+            response.sendRedirect(contextPath+"/admin/product");
+        }
     
     }
 
@@ -41,6 +47,7 @@ public class ProductController extends HttpServlet {
            int discount=Integer.parseInt(request.getParameter("pdiscount"));
            String[] tempTag = request.getParameterValues("ptags");
            String tags = Tag.convertTag(tempTag);
+           String rating=request.getParameter("prating");
          
            //file upload garna baki xa
            //encapsulate the data
@@ -49,6 +56,7 @@ public class ProductController extends HttpServlet {
            pm.setProduct_discount(discount);
            pm.setProduct_price(price);
            pm.setProduct_tag(tags);
+           pm.setProduct_rating(rating);
           
            //send the object to dao
           ProductDao.insert(pm);

@@ -86,7 +86,7 @@ public class ProductDao { // DAO(Data Access Object)
         
     }
     
-    public static void delete(String name) {
+    public static void delete(int id) {
         try {
 //            Class.forName("com.mysql.jdbc.Driver"); // for MySql
             Class.forName("org.postgresql.Driver");
@@ -105,7 +105,7 @@ public class ProductDao { // DAO(Data Access Object)
             System.out.println(e);
         }
         
-        String sql = "delete from products where product_name =" +name;    
+        String sql = "delete from products where product_id =" +id;    
         
         try {
             st = con.createStatement();
@@ -116,5 +116,5 @@ public class ProductDao { // DAO(Data Access Object)
         }
                 
     }
-    
+   
 }

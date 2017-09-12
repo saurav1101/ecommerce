@@ -57,5 +57,6 @@ public class TagTest {
         String[] a = new String[]{"food","lifestyle","fashion"};
         String expected="fashion,lifestyle,food,";
         assertEquals(expected, Tag.convertTag(a));
+            
     }
 }

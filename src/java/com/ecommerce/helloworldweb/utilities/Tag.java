@@ -14,7 +14,8 @@ public class Tag {
         String tags = "";
         for(int i = 0; i < tempTag.length; i++) {
              tags = tempTag[i] +"," +tags;             
-         }
+        }
+        
         return tags;
     }
 }

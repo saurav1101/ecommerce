@@ -71,6 +71,19 @@
                   <option>Accessories</option>
                 </select>
                   </div>
+                  
+                  <div class="form-group">
+                  <label for="exampleInputEmail1">Product Ratings</label>
+                  <!--<input type="text" name = "prating" class="form-control" id="exampleInputEmail1" placeholder="Enter product rating using ' * ' sign without single quotation">-->
+                <select name ="prating" class="form-control" style="width: 100%;">
+                  <option>-</option>
+                  <option>*</option>
+                  <option>**</option>
+                  <option>***</option>
+                  <option>****</option>
+                  <option>*****</option>
+                </select>
+                </div>  
                                   
                 <div class="form-group">
                   <label for="exampleInputFile">Upload product image</label>
@@ -117,6 +130,8 @@
                   <th>Product Rating</th>
                   <th>Product Discount</th>
                   <th>Product Image</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -130,6 +145,19 @@
                             <td>${products.product_rating}</td>
                             <td>${products.product_discount}</td>
                             <td>${products.product_image}</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/admin/product/edit/?id=${products.product_id}"> <!-- not secure injection -->
+                                    <span class ="glyphicon glyphicon-edit"> </span>
+                                </a>
+                            </td>
+                            
+                            <td>
+                                <a href="${pageContext.request.contextPath}/admin/product/delete/?id=${products.product_id}"> <!-- not secure injection -->
+                                    <span class ="glyphicon glyphicon-remove"> </span>
+                                </a>
+                            </td>
+                            
+                            
                             
                         </tr>
                     </c:forEach>
