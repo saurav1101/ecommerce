@@ -68,7 +68,7 @@ public class ProductController extends HttpServlet {
            
            int id=0;
            try {
-                id = Integer.parseInt(request.getParameter("id"));
+               id = Integer.parseInt(request.getParameter("id"));
                pm.setProduct_id(id);
            } catch (Exception e) {
            }

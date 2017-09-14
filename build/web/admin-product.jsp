@@ -180,6 +180,7 @@
                
 <jsp:include page="admin-footer.jsp"/>
 
+<%-- these are features that we choose to include or declude from the webpage--%>
 <script>
 //                $('#example1').DataTable({
 //                "paging": true,
