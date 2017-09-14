@@ -49,6 +49,38 @@ public class ProductDao { // DAO(Data Access Object)
             System.out.println(e);
         }
     }
+ 
+      public static void update(ProductModel pm) {
+    
+        try {
+//            Class.forName("com.mysql.jdbc.Driver"); // for MySql
+              Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            System.out.println(e);
+            
+        }
+        Connection con = null;
+        Statement st = null;
+        try {
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce-api", "root","");
+              con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ecommerce_api","postgres",
+                      "saurav");
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        
+        String sql ="update products set product_name='" +pm.getProduct_name()+"', product_price=" +pm.getProduct_price()+
+                ", product_tag='" +pm.getProduct_tag()+"', product_rating='"+pm.getProduct_rating()+"', product_discount=" +
+                pm.getProduct_discount()+", product_image='" +pm.getProduct_image() +"' where product_id="+pm.getProduct_id();
+                 
+        try {
+            st = con.createStatement();
+            st.execute(sql);
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+  
     
     public static ArrayList<ProductModel> select() {
         ArrayList al = new ArrayList();

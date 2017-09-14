@@ -65,9 +65,21 @@ public class ProductController extends HttpServlet {
            pm.setProduct_price(price);
            pm.setProduct_tag(tags);
            pm.setProduct_rating(rating);
-          
-           //send the object to dao
+           
+           int id=0;
+           try {
+                id = Integer.parseInt(request.getParameter("id"));
+               pm.setProduct_id(id);
+           } catch (Exception e) {
+           }
+           
+           if(id==0){
+          //send the object to dao
           ProductDao.insert(pm);
+           }
+           else {
+               ProductDao.update(pm);
+           }
           response.sendRedirect(contextPath+"/admin/product");
             
         }

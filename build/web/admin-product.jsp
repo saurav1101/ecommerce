@@ -40,6 +40,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form" action="${pageContext.request.contextPath}/admin/product/add" method="POST">
+                <input type ="hidden" name="id" value="${editproductval.get(0).product_id}"/>
               <div class="box-body">
                 
                 <div class="form-group">
@@ -95,7 +96,14 @@
                   
                   
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus">
+                         Add Product
+<%--                    <c:if test="${editproductval.get(0).product_name.equals(null)}">Add Product</c:if>
+                    <c:if test="${not editproductval.get(0).product_name!=(null)}">Update Product</c:if> --%>
+ 
+                    </span>
+                </button>
               </div>
                   
               </div>
