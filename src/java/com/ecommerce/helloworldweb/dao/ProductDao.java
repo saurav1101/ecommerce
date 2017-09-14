@@ -85,6 +85,40 @@ public class ProductDao { // DAO(Data Access Object)
         return al;
         
     }
+    public static ArrayList<ProductModel> selectById(int id) {
+        ArrayList al = new ArrayList();
+        try {
+//            Class.forName("com.mysql.jdbc.Driver"); // for MySql
+            Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            System.out.println(e);
+            
+        }
+
+        Connection con = null;
+        Statement st = null;
+        
+        try {
+//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce-api", "root","");
+              con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ecommerce_api","postgres",
+                      "saurav");
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        
+        String sql = "select *from products where product_id="+id;
+        try {
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+                al.add(new ProductModel(rs.getInt("product_id"), rs.getString("product_name"), rs.getInt("product_price"), rs.getString("product_tag"), rs.getString("product_rating"), rs.getInt("product_discount"), rs.getString("product_image")));
+                        
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return al;
+        
+    }
     
     public static void delete(int id) {
         try {

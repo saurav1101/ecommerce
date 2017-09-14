@@ -44,17 +44,17 @@
                 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Product Name</label>
-                  <input type="text" name = "pname" class="form-control" id="exampleInputEmail1" placeholder="Enter product name">
+                  <input type="text" value = "${editproductval.get(0).product_name}" name = "pname" class="form-control" id="exampleInputEmail1" placeholder="Enter product name">
                 </div>
                   
                 <div class="form-group">
                   <label for="exampleInputEmail1">Product Price</label>
-                  <input type="text" name = "pprice" class="form-control" id="exampleInputEmail1" placeholder="Enter product price">
+                  <input type="text" value = "${editproductval.get(0).product_price}" name = "pprice" class="form-control" id="exampleInputEmail1" placeholder="Enter product price">
                 </div>
                 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Product Discount</label>
-                  <input type="text" name = "pdiscount" class="form-control" id="exampleInputEmail1" placeholder="Enter product discount">
+                  <input type="text" value = "${editproductval.get(0).product_discount}" name = "pdiscount" class="form-control" id="exampleInputEmail1" placeholder="Enter product discount">
                 </div>  
     
                       
@@ -62,13 +62,16 @@
                 <div class="form-group">
                 <label>Product Tags</label>
                 <select name ="ptags" class="form-control select2" multiple="multiple" data-placeholder="Type to show tags" style="width: 100%;">
-                  <option>Food</option>
-                  <option>LifeStyle</option>
-                  <option>Electronics</option>
-                  <option>Computer and IT gadgets</option>
-                  <option>Sports</option>
-                  <option>Health</option>
-                  <option>Accessories</option>
+                  <option <c:if test="${editproductval.get(0).product_tag.contains('Food')}">selected</c:if>>Food</option>
+                  <option <c:if test="${editproductval.get(0).product_tag.contains('LifeStyle')}">selected</c:if>>LifeStyle</option>
+                  <option <c:if test="${editproductval.get(0).product_tag.contains('Sports')}">selected</c:if>>Sports</option>
+                  <option <c:if test="${editproductval.get(0).product_tag.contains('Electronics')}">selected</c:if>>Electronics</option>
+                  <option <c:if test="${editproductval.get(0).product_tag.contains('Health')}">selected</c:if>>Health</option>
+                  <option <c:if test="${editproductval.get(0).product_tag.contains('Accessories')}">selected</c:if>>Accessories</option>
+                  <option <c:if test="${editproductval.get(0).product_tag.contains('Computer and IT gadgets')}">selected</c:if>>Computer and IT gadgets</option>
+                  
+                  
+                  
                 </select>
                   </div>
                   
@@ -76,12 +79,12 @@
                   <label for="exampleInputEmail1">Product Ratings</label>
                   <!--<input type="text" name = "prating" class="form-control" id="exampleInputEmail1" placeholder="Enter product rating using ' * ' sign without single quotation">-->
                 <select name ="prating" class="form-control" style="width: 100%;">
-                  <option>-</option>
-                  <option>*</option>
-                  <option>**</option>
-                  <option>***</option>
-                  <option>****</option>
-                  <option>*****</option>
+                  <option <c:if test="${editproductval.get(0).product_rating.contains('-')}">selected</c:if>>-</option>
+                  <option <c:if test="${editproductval.get(0).product_rating.contains('*')}">selected</c:if>>*</option>
+                  <option <c:if test="${editproductval.get(0).product_rating.contains('**')}">selected</c:if>>**</option>
+                  <option <c:if test="${editproductval.get(0).product_rating.contains('***')}">selected</c:if>>***</option>
+                  <option <c:if test="${editproductval.get(0).product_rating.contains('****')}">selected</c:if>>****</option>
+                  <option <c:if test="${editproductval.get(0).product_rating.contains('*****')}">selected</c:if>>*****</option>
                 </select>
                 </div>  
                                   

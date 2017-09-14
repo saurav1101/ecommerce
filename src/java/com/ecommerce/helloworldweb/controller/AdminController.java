@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Saurav
  */
+
+// war = Web Application Archive
+// CRUD or CURD = Create Read Update Delete
+
 @WebServlet({"/admin-dashboard", "/admin/product"})
 public class AdminController extends HttpServlet {
 

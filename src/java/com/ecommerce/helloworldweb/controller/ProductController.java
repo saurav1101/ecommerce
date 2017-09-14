@@ -9,6 +9,7 @@ import com.ecommerce.helloworldweb.dao.ProductDao;
 import com.ecommerce.helloworldweb.model.ProductModel;
 import com.ecommerce.helloworldweb.utilities.Tag;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Saurav
  */
-@WebServlet({"/admin/product/add","/admin/product/delete/"})
+@WebServlet({"/admin/product/add","/admin/product/delete/","/admin/product/edit/"})
 public class ProductController extends HttpServlet {
 
     
@@ -31,6 +32,13 @@ public class ProductController extends HttpServlet {
             int id=Integer.parseInt(request.getParameter("id"));
             ProductDao.delete(id);
             response.sendRedirect(contextPath+"/admin/product");
+        }
+        else if(request.getRequestURI().equals(contextPath+"/admin/product/edit/")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            request.setAttribute("editproductval",ProductDao.selectById(id));            
+//          response.sendRedirect(contextPath+"/admin/product"); doesn't work
+            RequestDispatcher rd = request.getRequestDispatcher("/admin-product.jsp");
+            rd.forward(request, response);
         }
     
     }
