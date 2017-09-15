@@ -116,14 +116,9 @@
                                   
               <!-- /.box-body -->
 
-              
-                                  
-                                  
           <!-- /.box -->
     
-      
-    
-
+ 
  
               <div class="box">
             <div class="box-header">
@@ -168,7 +163,7 @@
                             </td>
                             
                             <td>
-                                <a href="${pageContext.request.contextPath}/admin/product/delete/?id=${products.product_id}"> <!-- not secure injection -->
+                                <a href="${pageContext.request.contextPath}/admin/product/delete/?id=${products.product_id}&file=${products.product_image}"> <!-- not secure injection -->
                                     <span class ="glyphicon glyphicon-remove"> </span>
                                 </a>
                             </td>

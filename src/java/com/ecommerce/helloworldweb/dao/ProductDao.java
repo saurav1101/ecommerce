@@ -152,7 +152,7 @@ public class ProductDao { // DAO(Data Access Object)
         
     }
     
-    public static void delete(int id) {
+    public static boolean delete(int id) {
         try {
 //            Class.forName("com.mysql.jdbc.Driver"); // for MySql
             Class.forName("org.postgresql.Driver");
@@ -176,8 +176,9 @@ public class ProductDao { // DAO(Data Access Object)
         try {
             st = con.createStatement();
             st.execute(sql);
+            return true;
         } catch (Exception e){ 
-            System.out.println(e);
+            return false;
           
         }
                 

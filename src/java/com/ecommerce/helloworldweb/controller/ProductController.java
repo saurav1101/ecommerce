@@ -7,6 +7,7 @@ package com.ecommerce.helloworldweb.controller;
 
 import com.ecommerce.helloworldweb.dao.ProductDao;
 import com.ecommerce.helloworldweb.model.ProductModel;
+import com.ecommerce.helloworldweb.utilities.FileUpload;
 import com.ecommerce.helloworldweb.utilities.Tag;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -32,7 +33,10 @@ public class ProductController extends HttpServlet {
         String contextPath=request.getContextPath();
         if(request.getRequestURI().equals(contextPath+"/admin/product/delete/")) {
             int id=Integer.parseInt(request.getParameter("id"));
-            ProductDao.delete(id);
+            String fileName=request.getParameter("file");
+            if(ProductDao.delete(id)) {
+                FileUpload.deleteFile(request, fileName);
+            }
             response.sendRedirect(contextPath+"/admin/product");
         }
         else if(request.getRequestURI().equals(contextPath+"/admin/product/edit/")){
@@ -54,7 +58,7 @@ public class ProductController extends HttpServlet {
         if(request.getRequestURI().equals(contextPath+"/admin/product/add")){
             //file upload start
            String saveLocation = request.getServletContext().getRealPath("/files");
-           MultipartRequest  mr = new MultipartRequest(request, saveLocation, 1000000, new DefaultFileRenamePolicy());
+           MultipartRequest  mr = new MultipartRequest(request, saveLocation, 10000000, new DefaultFileRenamePolicy());
            String imageName = mr.getOriginalFileName("files");
            String name=mr.getParameter("pname");
            int price=Integer.parseInt(mr.getParameter("pprice")); 

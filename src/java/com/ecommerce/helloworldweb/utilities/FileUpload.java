@@ -5,8 +5,7 @@
  */
 package com.ecommerce.helloworldweb.utilities;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import java.io.File;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -14,15 +13,14 @@ import javax.servlet.http.HttpServletRequest;
  * @author SAURAV
  */
 public class FileUpload {
-    public static boolean uploadImage(HttpServletRequest httpServletRequest) {
-        try{
-        String saveLocation = httpServletRequest.getServletContext().getRealPath("/files");
-        // defining the multipartrequest class
-        
-        MultipartRequest  mr = new MultipartRequest(httpServletRequest, saveLocation, 1000000, new DefaultFileRenamePolicy());
-        return true;
-        } catch(Exception e) {
+    public static boolean deleteFile(HttpServletRequest request, String name) {
+        String path = request.getServletContext().getRealPath("/files");
+        File file = new File(path+File.separatorChar+name);
+        if(file.delete()) {
+            return true;
+        } else {
             return false;
         }
     }
 }
+
