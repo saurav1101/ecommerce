@@ -8,6 +8,8 @@ package com.ecommerce.helloworldweb.controller;
 import com.ecommerce.helloworldweb.dao.ProductDao;
 import com.ecommerce.helloworldweb.model.ProductModel;
 import com.ecommerce.helloworldweb.utilities.Tag;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,14 +52,19 @@ public class ProductController extends HttpServlet {
     
         String contextPath = request.getContextPath();
         if(request.getRequestURI().equals(contextPath+"/admin/product/add")){
-           String name=request.getParameter("pname");
-           int price=Integer.parseInt(request.getParameter("pprice")); 
-           int discount=Integer.parseInt(request.getParameter("pdiscount"));
-           String[] tempTag = request.getParameterValues("ptags");
+            //file upload start
+           String saveLocation = request.getServletContext().getRealPath("/files");
+           MultipartRequest  mr = new MultipartRequest(request, saveLocation, 1000000, new DefaultFileRenamePolicy());
+           String imageName = mr.getOriginalFileName("files");
+           String name=mr.getParameter("pname");
+           int price=Integer.parseInt(mr.getParameter("pprice")); 
+           int discount=Integer.parseInt(mr.getParameter("pdiscount"));
+           String[] tempTag = mr.getParameterValues("ptags");
            String tags = Tag.convertTag(tempTag);
-           String rating=request.getParameter("prating");
+           String rating=mr.getParameter("prating");
          
-           //file upload garna baki xa
+           
+            //file upload garna baki xa
            //encapsulate the data
            ProductModel pm = new ProductModel();
            pm.setProduct_name(name);
@@ -65,6 +72,7 @@ public class ProductController extends HttpServlet {
            pm.setProduct_price(price);
            pm.setProduct_tag(tags);
            pm.setProduct_rating(rating);
+           pm.setProduct_image(imageName);
            
            int id=0;
            try {

@@ -39,7 +39,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="${pageContext.request.contextPath}/admin/product/add" method="POST">
+            <form role="form" action="${pageContext.request.contextPath}/admin/product/add" method="POST" enctype ="multipart/form-data">
                 <input type ="hidden" name="id" value="${editproductval.get(0).product_id}"/>
               <div class="box-body">
                 
@@ -91,7 +91,7 @@
                                   
                 <div class="form-group">
                   <label for="exampleInputFile">Upload product image</label>
-                  <input type="file" id="exampleInputFile">
+                  <input type="file" id="exampleInputFile" name="files">
                 </div>
                   
                   
@@ -155,7 +155,12 @@
                             <td>${products.product_tag}</td>
                             <td>${products.product_rating}</td>
                             <td>${products.product_discount}</td>
-                            <td>${products.product_image}</td>
+                            <td>
+                                <a href = "${pageContext.request.contextPath}/files/${products.product_image}" target ="_blank">
+                                <img height ="30" width ="30" src="${pageContext.request.contextPath}/files/${products.product_image}" alt="${products.product_image}"/>
+                                </a>
+                            </td>
+                            
                             <td>
                                 <a href="${pageContext.request.contextPath}/admin/product/edit/?id=${products.product_id}"> <!-- not secure injection -->
                                     <span class ="glyphicon glyphicon-edit"> </span>
