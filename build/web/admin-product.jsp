@@ -142,7 +142,7 @@
                 </thead>
                 <tbody>
                     
-                    <c:forEach items = "${productvalues}" var ="products">
+                    <c:forEach items = "${productvalue}" var ="products">
                         <tr>
                             <td>${products.product_id}</td>
                             <td>${products.product_name}</td>

@@ -68,11 +68,17 @@ public class ProductDao { // DAO(Data Access Object)
         } catch (Exception e){
             System.out.println(e);
         }
-        
-        String sql ="update products set product_name='" +pm.getProduct_name()+"', product_price=" +pm.getProduct_price()+
+        String sql="";
+        if(pm.getProduct_image()!=null) {
+        sql ="update products set product_name='" +pm.getProduct_name()+"', product_price=" +pm.getProduct_price()+
                 ", product_tag='" +pm.getProduct_tag()+"', product_rating='"+pm.getProduct_rating()+"', product_discount=" +
                 pm.getProduct_discount()+", product_image='" +pm.getProduct_image() +"' where product_id="+pm.getProduct_id();
-                 
+        }
+        else {
+            sql ="update products set product_name='" +pm.getProduct_name()+"', product_price=" +pm.getProduct_price()+
+                ", product_tag='" +pm.getProduct_tag()+"', product_rating='"+pm.getProduct_rating()+"', product_discount=" +
+                pm.getProduct_discount()+"' where product_id="+pm.getProduct_id();
+        }
         try {
             st = con.createStatement();
             st.execute(sql);

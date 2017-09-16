@@ -35,7 +35,7 @@ public class AdminController extends HttpServlet {
             rd.forward(request, response);
         }
         else if(request.getRequestURI().equals(contextPath +"/admin/product")){
-            request.setAttribute("productvalues", ProductDao.select());
+            request.setAttribute("productvalue", ProductDao.select());
             
             RequestDispatcher rd = request.getRequestDispatcher("/admin-product.jsp");
             rd.forward(request, response);

@@ -78,12 +78,14 @@ public class ProductController extends HttpServlet {
            pm.setProduct_rating(rating);
            pm.setProduct_image(imageName);
            
+            System.out.println(pm.getProduct_image());
+            System.out.println(mr.getParameter("id"));
            int id=0;
            try {
-               id = Integer.parseInt(request.getParameter("id"));
+               id = Integer.parseInt(mr.getParameter("id"));
                pm.setProduct_id(id);
            } catch (Exception e) {
-           }
+             }
            
            if(id==0){
           //send the object to dao
